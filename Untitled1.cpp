@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 typedef struct {
 	char maSach[10] ;
 	char tenSach[50] ;
@@ -63,5 +65,15 @@ void xuatDanhSach(Node *head) {
         printf("----------------------\n");
         temp = temp->next;
     }
+}
+Node* timSach(Node *head , char ma){
+	Node *p = head ;
+	while(p != NULL){
+		if(strcmp(p->data.maSach , ma) == 0){
+			return p ;
+		}
+		p = p->next ;
+	}
+	return NULL ;
 }
 
