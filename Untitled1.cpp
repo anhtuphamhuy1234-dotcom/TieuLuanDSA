@@ -76,4 +76,32 @@ Node* timSach(Node *head , char ma){
 	}
 	return NULL ;
 }
+void themSach(Node **head){
+	Sach s ;
+	printf("Nhap ma sach :") ;
+	scanf("%s" , s.maSach) ;
+	printf("Nhap ten sach: ");
+    scanf(" %[^\n]", s.tenSach);
+    printf("Nhap tac gia: ");
+    scanf(" %[^\n]", s.tacGia);
+    printf("Nhap nam xuat ban: ");
+    scanf("%d", &s.namXuatBan);
+    printf("Nhap so luong: ");
+    scanf("%d", &s.soLuong);
+    Node *p = (Node*)malloc(sizeof(Node)) ;
+    if(p == NULL){
+    	printf("Khong du bo nho") ;
+    	return ;
+	}
+	p->data = s ;
+	p->next = NULL ;
+	if(*head == NULL){
+		*head = p ;
+	} else {
+		Node *temp = *head ;
+		while (temp->next != NULL) temp = temp->next ;
+		temp->next = p ;
+	}
+	printf("Them thanh cong") ;
+}
 
