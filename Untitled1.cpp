@@ -66,7 +66,7 @@ void xuatDanhSach(Node *head) {
         temp = temp->next;
     }
 }
-Node* timSach(Node *head , char ma){
+Node* timSach(Node *head , char *ma){
 	Node *p = head ;
 	while(p != NULL){
 		if(strcmp(p->data.maSach , ma) == 0){
@@ -76,32 +76,28 @@ Node* timSach(Node *head , char ma){
 	}
 	return NULL ;
 }
-void themSach(Node **head){
-	Sach s ;
-	printf("Nhap ma sach :") ;
-	scanf("%s" , s.maSach) ;
+void themSach(Node **head) {
+	Sach s;
+	printf("\n=== THEM SACH MOI ===\n");	
+		do {
+		printf("Nhap ma sach: ");
+		scanf("%s", s.maSach);
+		if(timSach(*head, s.maSach) != NULL) {
+			printf("Loi! Nhap lai ma khac. \n");
+		}
+	}  while(timSach(*head, s.maSach) != NULL);
+	getchar();
 	printf("Nhap ten sach: ");
-    scanf(" %[^\n]", s.tenSach);
-    printf("Nhap tac gia: ");
-    scanf(" %[^\n]", s.tacGia);
-    printf("Nhap nam xuat ban: ");
+	scanf("%[^\n]" , s.tenSach);
+	getchar();
+	printf("Nhap tac gia: ");
+	scanf("%[^\n]" , s.tacGia);
+	getchar();
+	printf("Nhap nam xuat ban: ");
     scanf("%d", &s.namXuatBan);
     printf("Nhap so luong: ");
     scanf("%d", &s.soLuong);
-    Node *p = (Node*)malloc(sizeof(Node)) ;
-    if(p == NULL){
-    	printf("Khong du bo nho") ;
-    	return ;
-	}
-	p->data = s ;
-	p->next = NULL ;
-	if(*head == NULL){
-		*head = p ;
-	} else {
-		Node *temp = *head ;
-		while (temp->next != NULL) temp = temp->next ;
-		temp->next = p ;
-	}
-	printf("Them thanh cong") ;
+	themCuoi(head, s);
+	printf("-> Them sach thanh cong! \n");
 }
 
