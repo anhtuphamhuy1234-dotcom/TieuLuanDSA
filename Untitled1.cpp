@@ -100,4 +100,31 @@ void themSach(Node **head) {
 	themCuoi(head, s);
 	printf("-> Them sach thanh cong! \n");
 }
+void hienThiDanhSach(Node *head) {
+	if(head == NULL) {
+		printf("\n==============================");
+		printf("          DANH SACH HIEN TAI DANG RONG (KHONG CO SACH)!    \n");
+		printf("\n==============================");
+		return;
+	}
+	int stt = 1;
+	Node *temp = head;
+	
+	printf("\n================================ DANH SACH SACH HIEN TAI ================================\n");
+	printf("%-5s | %-10s | %-30s | %-20s | %-8s | %-8s\n",
+			"STT", "Ma Sach", "Ten Sach", "Tac Gia", "Nam XB", "So Luong");
+    printf("-----------------------------------------------------------------------------------------\n");
+
+    while (temp != NULL) {
+        printf("%-5d | %-10s | %-30s | %-20s | %-8d | %-8d\n", 
+               stt++, 
+               temp->data.maSach, 
+               temp->data.tenSach, 
+               temp->data.tacGia, 
+               temp->data.namXuatBan, 
+               temp->data.soLuong);
+        temp = temp->next;
+    }
+    printf("=========================================================================================\n");
+}
 
