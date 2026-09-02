@@ -127,4 +127,32 @@ void hienThiDanhSach(Node *head) {
     }
     printf("=========================================================================================\n");
 }
-
+void xoaSach(Node **head) {
+    if (*head == NULL) {
+        printf("\nDanh sach hien tai dang rong! Khong the xoa.\n");
+        return;
+    }
+    char ma[10];
+    printf("\n=== XOA SACH ===");
+    printf("\nNhap ma sach can xoa: ");
+    scanf("%s", ma);
+    Node *temp = *head;
+    Node *prev = NULL;
+    if (temp != NULL && strcmp(temp->data.maSach, ma) == 0) {
+        *head = temp->next;
+        free(temp);
+        printf("-> Xoa sach co ma '%s' thanh cong!\n", ma);
+        return;
+    }
+    while (temp != NULL && strcmp(temp->data.maSach, ma) != 0) {
+        prev = temp;
+        temp = temp->next;
+    }
+    if (temp == NULL) {
+        printf("-> Khong tim thay sach co ma '%s' de xoa!\n", ma);
+        return;
+    }
+    prev->next = temp->next;
+    free(temp);
+    printf("-> Xoa sach co ma '%s' thanh cong!\n", ma);
+}
