@@ -100,6 +100,19 @@ void themSach(Node **head) {
 	themCuoi(head, s);
 	printf("-> Them sach thanh cong! \n");
 }
+void thongKe(Node *head){
+	int soDauSach = 0 ;
+	int tongSL = 0 ;
+	Node *p = head ;
+	while(p != NULL){
+		soDauSach++ ;
+		tongSL += p->data.soLuong ;
+		p = p->next ;
+	}
+	printf("So dau sach : %d\n" , soDauSach) ;
+	printf("Tong so luong : %d\n" , tongSL) ;
+}
+//Phuc
 void hienThiDanhSach(Node *head) {
 	if(head == NULL) {
 		printf("\n==============================");
