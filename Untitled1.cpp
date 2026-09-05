@@ -207,3 +207,90 @@ void hienThiLichSu() {
 	}
 	printf("==================================================\n");
 }
+
+int main() {
+    Node *head = NULL;
+    int luaChon;
+
+    do {
+        printf("\n================ PHAN MEM QUAN LY THU VIEN ================\n");
+        printf("1. Nhap danh sach\n");
+        printf("2. Tim kiem phan tu\n");
+        printf("3. Cap nhat thong tin\n");
+        printf("4. Doc file .txt\n");
+        printf("5. Thong ke du lieu\n");
+        printf("6. Them phan tu moi\n");
+        printf("7. Hien thi danh sach\n");
+        printf("8. Xoa phan tu\n");
+        printf("9. Sap xep danh sach (Theo Nam XB)\n");
+        printf("10. Lich su thao tac\n");
+        printf("0. Thoat chuong trinh\n");
+        printf("===========================================================\n");
+        printf("Chon chuc nang (0-10): ");
+        scanf("%d", &luaChon);
+
+        switch (luaChon) {
+            case 1:
+                themSach(&head);
+                ghiLichSu("Nhap danh sach");
+                break;
+            case 2: {
+                char ma[10];
+                printf("\nNhap ma sach can tim: ");
+                scanf("%s", ma);
+                Node *p = timSach(head, ma);
+                if (p != NULL) {
+                    printf("-> Tim thay: Ma %s - Ten: %s\n", p->data.maSach, p->data.tenSach);
+                } else {
+                    printf("-> Khong tim thay sach!\n");
+                }
+                ghiLichSu("Tim kiem phan tu");
+                break;
+            }
+            case 3:
+                printf("\nCap nhat thong tin sach\n");
+                ghiLichSu("Cap nhat thong tin");
+                break;
+            case 4: {
+                char fileName[50];
+                printf("\nNhap ten file (vd: dssach.txt): ");
+                scanf("%s", fileName);
+                docFile(&head, fileName);
+                ghiLichSu("Doc file .txt");
+                break;
+            }
+            case 5:
+                printf("\nThong ke du lieu:\n");
+                thongKe(head);
+                ghiLichSu("Thong ke du lieu");
+                break;
+            case 6:
+                themSach(&head);
+                ghiLichSu("Them phan tu moi");
+                break;
+            case 7:
+                hienThiDanhSach(head);
+                ghiLichSu("Hien thi danh sach");
+                break;
+            case 8:
+                xoaSach(&head);
+                ghiLichSu("Xoa phan tu");
+                break;
+            case 9:
+                sapXepSach(head);
+                hienThiDanhSach(head);
+                ghiLichSu("Sap xep danh sach");
+                break;
+            case 10:
+                hienThiLichSu();
+                break;
+            case 0:
+                printf("\nDa thoat chuong trinh. Tam biet!\n");
+                break;
+            default:
+                printf("\nLua chon khong hop le! Vui long chon lai.\n");
+        }
+    } while (luaChon != 0);
+
+    return 0;
+}
