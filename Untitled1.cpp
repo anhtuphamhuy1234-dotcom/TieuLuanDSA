@@ -169,3 +169,41 @@ void xoaSach(Node **head) {
     free(temp);
     printf("-> Xoa sach co ma '%s' thanh cong!\n", ma);
 }
+void sapXepSach (Node *head) {
+	if(head == NULL || head->next == NULL ) {
+		printf("\n Danh sach rong hoac chi co 1 sach, khong can sap xep! \n");
+		return;
+	}
+	for(Node *i = head; i->next != NULL; i = i->next) {
+		for(Node *j = i->next; j != NULL; j = j->next) {
+			if(i->data.namXuatBan > j->data.namXuatBan) {
+				Sach temp = i->data;
+				i->data = j->data;
+				j->data = temp;
+			}
+		}
+	}
+	printf("\n -> Da sap xep theo nam xuat ban thanh cong!\n");
+}
+char lichSu[100][100];
+int soThaoTac = 0;
+
+void ghiLichSu(char *thaoTac) {
+	if(soThaoTac < 100) {
+		strcpy(lichSu[soThaoTac], thaoTac);
+		soThaoTac++;
+	}
+}
+
+
+void hienThiLichSu() {
+	if(soThaoTac == 0) {
+		printf("\n Chua co thao tac nao duoc thuc hien! \n");
+		return;
+	}
+	printf("\n================ LICH SU THAO TAC ================\n");
+	for (int i = 0; i < soThaoTac;i++) {
+		printf("%d. %s\n", i + 1, lichSu[i]);
+	}
+	printf("==================================================\n");
+}
