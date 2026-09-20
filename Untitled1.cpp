@@ -187,15 +187,12 @@ void sapXepSach (Node *head) {
 }
 char lichSu[100][100];
 int soThaoTac = 0;
-
 void ghiLichSu(char *thaoTac) {
 	if(soThaoTac < 100) {
 		strcpy(lichSu[soThaoTac], thaoTac);
 		soThaoTac++;
 	}
 }
-
-
 void hienThiLichSu() {
 	if(soThaoTac == 0) {
 		printf("\n Chua co thao tac nao duoc thuc hien! \n");
