@@ -188,7 +188,7 @@ void sapXepSach (Node *head) {
 char lichSu[100][100];
 int soThaoTac = 0;
 
-void ghiLichSu(char *thaoTac) {
+void ghiLichSu(char const *thaoTac) {
 	if(soThaoTac < 100) {
 		strcpy(lichSu[soThaoTac], thaoTac);
 		soThaoTac++;
