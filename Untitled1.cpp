@@ -112,7 +112,6 @@ void thongKe(Node *head){
 	printf("So dau sach : %d\n" , soDauSach) ;
 	printf("Tong so luong : %d\n" , tongSL) ;
 }
-//Phuc
 void hienThiDanhSach(Node *head) {
 	if(head == NULL) {
 		printf("\n==============================");
