@@ -1,0 +1,8 @@
+MS001|Dac Nhan Tam|Dale Carnegie|1936|10
+MS002|Nha Gia Kim|Paulo Coelho|1988|8
+MS003|Tuoi Tre Dang Gia Bao Nhieu|Rosie Nguyen|2016|12
+MS004|Mat Biec|Nguyen Nhat Anh|1990|7
+MS005|Toi Thay Hoa Vang Tren Co Xanh|Nguyen Nhat Anh|2010|15
+MS006|Harry Potter va Hon Da Phu Thuy|J.K. Rowling|1997|9
+MS007|Dac Nhan Tam|Dale Carnegie|1936|6
+MS008|Cho Toi Xin Mot Ve Di Tuoi Tho|Nguyen Nhat Anh|2008|11
