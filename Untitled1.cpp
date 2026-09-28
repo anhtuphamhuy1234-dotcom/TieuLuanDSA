@@ -54,18 +54,6 @@ void docFile(Node **head , char *filename){
     }
     fclose(f) ;
 }
-void xuatDanhSach(Node *head) {
-    Node *temp = head;
-    while (temp != NULL) {
-        printf("Ma sach: %s\n", temp->data.maSach);
-        printf("Ten sach: %s\n", temp->data.tenSach);
-        printf("Tac gia: %s\n", temp->data.tacGia);
-        printf("Nam XB: %d\n", temp->data.namXuatBan);
-        printf("So luong: %d\n", temp->data.soLuong);
-        printf("----------------------\n");
-        temp = temp->next;
-    }
-}
 Node* timSach(Node *head , char *ma){
 	Node *p = head ;
 	while(p != NULL){
