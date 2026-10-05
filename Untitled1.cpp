@@ -180,13 +180,12 @@ int main() {
         printf("\n================ PHAN MEM QUAN LY THU VIEN ================\n");
         printf("1. Nhap danh sach\n");
         printf("2. Tim kiem phan tu\n");
-        printf("3. Cap nhat thong tin\n");
-        printf("4. Doc file .txt\n");
-        printf("5. Thong ke du lieu\n");
-        printf("6. Them phan tu moi\n");
-        printf("7. Hien thi danh sach\n");
-        printf("8. Xoa phan tu\n");
-        printf("9. Sap xep danh sach (Theo Nam XB)\n");
+        printf("3. Doc file .txt\n");
+        printf("4. Thong ke du lieu\n");
+        printf("5. Them phan tu moi\n");
+        printf("6. Hien thi danh sach\n");
+        printf("7. Xoa phan tu\n");
+        printf("8. Sap xep danh sach (Theo Nam XB)\n");
         printf("0. Thoat chuong trinh\n");
         printf("===========================================================\n");
         printf("Chon chuc nang (0-9): ");
@@ -208,30 +207,27 @@ int main() {
                 }
                 break;
             }
-            case 3:
-                printf("\nCap nhat thong tin sach\n");
-                break;
-            case 4: {
+            case 3: {
                 char fileName[50];
                 printf("\nNhap ten file (vd: dssach.txt): ");
                 scanf("%s", fileName);
                 docFile(&head, fileName);
                 break;
             }
-            case 5:
+            case 4:
                 printf("\nThong ke du lieu:\n");
                 thongKe(head);
                 break;
-            case 6:
+            case 5:
                 themSach(&head);
                 break;
-            case 7:
+            case 6:
                 hienThiDanhSach(head);
                 break;
-            case 8:
+            case 7:
                 xoaSach(&head);
                 break;
-            case 9:
+            case 8:
                 sapXepSach(head);
                 hienThiDanhSach(head);
                 break;
