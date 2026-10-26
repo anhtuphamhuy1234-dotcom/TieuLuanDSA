@@ -13,6 +13,48 @@ typedef struct node {
 	struct node *next ;
 }Node;
 Node *head = NULL ;
+typedef struct treeNode{
+	Sach data ;
+	struct treeNode *right ;
+	struct treeNode *left ;
+}treeNode;
+treeNode *root = NULL ;
+treeNode *taoNodeCay(Sach s){
+	treeNode *p =(treeNode*)malloc(sizeof(treeNode)) ;
+	if(p == NULL) {
+		printf("Khong du bo nho\n") ;
+		return NULL ;
+	}
+	p->data = s ;
+	p->left = NULL ;
+	p->right = NULL ;
+	return p ;
+}
+treeNode* themVaoCay(treeNode *root, Sach s) {
+    if (root == NULL) {
+        return taoNodeCay(s) ;
+    }
+    int cmp = strcmp(s.maSach, root->data.maSach) ;
+    if (cmp < 0) {
+        root->left = themVaoCay(root->left, s) ;
+    } else if (cmp > 0) {
+        root->right = themVaoCay(root->right, s) ;
+    }
+    return root ;
+}
+void xuatDanhSachCay(treeNode *root) {
+    if (root == NULL) {
+        return ;
+    }
+    xuatDanhSachCay(root->left);
+    printf("%-10s | %-30s | %-20s | %-10d | %-10d\n",
+           root->data.maSach,
+           root->data.tenSach,
+           root->data.tacGia,
+           root->data.namXuatBan,
+           root->data.soLuong) ;
+    xuatDanhSachCay(root->right) ;
+}
 Node* taoNode (Sach s){
 	Node *p = (Node*)malloc(sizeof(Node)) ;
 	if(p == NULL){
@@ -51,6 +93,7 @@ void docFile(Node **head , char *filename){
                   &s.soLuong) == 5) {
 
         themCuoi(head, s);
+        root = themVaoCay(root, s);
     }
     fclose(f) ;
 }
@@ -86,6 +129,7 @@ void themSach(Node **head) {
     printf("Nhap so luong: ");
     scanf("%d", &s.soLuong);
 	themCuoi(head, s);
+	root = themVaoCay(root, s);
 	printf("-> Them sach thanh cong! \n");
 }
 void thongKe(Node *head){
@@ -186,6 +230,7 @@ int main() {
         printf("6. Hien thi danh sach\n");
         printf("7. Xoa phan tu\n");
         printf("8. Sap xep danh sach (Theo Nam XB)\n");
+        printf("9. Xuat danh sach cay BST\n");
         printf("0. Thoat chuong trinh\n");
         printf("===========================================================\n");
         printf("Chon chuc nang (0-9): ");
@@ -230,6 +275,9 @@ int main() {
             case 8:
                 sapXepSach(head);
                 hienThiDanhSach(head);
+                break;
+            case 9:
+                xuatDanhSachCay(root);
                 break;
             case 0:
                 printf("\nDa thoat chuong trinh. Tam biet!\n");
