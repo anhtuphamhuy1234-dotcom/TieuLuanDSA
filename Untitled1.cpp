@@ -287,27 +287,22 @@ void hienThiStack(StackNode *top) {
     }
     printf("================================================\n");
 }
-void thongKeCay(treeNode *root, int *soDauSach, int *tongSoLuong, int *soSachTruoc2020) {
+void thongKeCay(treeNode *root, int *soDauSach, int *tongSoLuong) {
     if (root == NULL) {
         return;
     }
     (*soDauSach)++;
     *tongSoLuong += root->data.soLuong;
-    if (root->data.namXuatBan < 2020) {
-        (*soSachTruoc2020)++;
-    }
-    thongKeCay(root->left, soDauSach, tongSoLuong, soSachTruoc2020);
-    thongKeCay(root->right, soDauSach, tongSoLuong, soSachTruoc2020);
+    thongKeCay(root->left, soDauSach, tongSoLuong);
+    thongKeCay(root->right, soDauSach, tongSoLuong);
 }
 void hienThiThongKeCay(treeNode *root) {
     int soDauSach = 0;
     int tongSoLuong = 0;
-    int soSachTruoc2020 = 0;
-    thongKeCay(root, &soDauSach, &tongSoLuong, &soSachTruoc2020);
+    thongKeCay(root, &soDauSach, &tongSoLuong);
     printf("\n========== THONG KE DU LIEU CAY BST ==========\n");
     printf("Tong so dau sach       : %d\n", soDauSach);
     printf("Tong so luong sach     : %d\n", tongSoLuong);
-    printf("So dau sach truoc 2020 : %d\n", soSachTruoc2020);
     printf("==============================================\n");
 }
 int main() {
