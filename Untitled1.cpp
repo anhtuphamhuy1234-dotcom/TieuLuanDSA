@@ -19,6 +19,11 @@ typedef struct treeNode{
 	struct treeNode *left ;
 }treeNode;
 treeNode *root = NULL ;
+typedef struct stackNode {
+    Sach data;
+    struct stackNode *next;
+} StackNode;
+StackNode *top = NULL;
 treeNode *taoNodeCay(Sach s){
 	treeNode *p =(treeNode*)malloc(sizeof(treeNode)) ;
 	if(p == NULL) {
@@ -216,6 +221,89 @@ void sapXepSach (Node *head) {
 	}
 	printf("\n -> Da sap xep theo nam xuat ban thanh cong!\n");
 }
+void push(StackNode **top, Sach s) {
+    StackNode *p = (StackNode*)malloc(sizeof(StackNode));
+    if (p == NULL) {
+        printf("Khong du bo nho!\n");
+        return;
+    }
+    p->data = s;
+    p->next = *top;
+    *top = p;
+    printf("Them sach vao Stack thanh cong!\n");
+}
+void pop(StackNode **top) {
+    if (*top == NULL) {
+        printf("Stack dang rong!\n");
+        return;
+    }
+
+    StackNode *temp = *top;
+
+    printf("Da xoa sach: %s - %s\n",
+           temp->data.maSach,
+           temp->data.tenSach);
+
+    *top = temp->next;
+    free(temp);
+}
+void suaSachStack(StackNode *top) {
+    char ma[10];
+    printf("Nhap ma sach can sua: ");
+    scanf("%9s", ma);
+
+    StackNode *p = top;
+
+    while (p != NULL) {
+        if (strcmp(p->data.maSach, ma) == 0) {
+            getchar();
+
+            printf("Nhap ten sach moi: ");
+            scanf("%49[^\n]", p->data.tenSach);
+            getchar();
+
+            printf("Nhap tac gia moi: ");
+            scanf("%49[^\n]", p->data.tacGia);
+
+            printf("Nhap nam xuat ban moi: ");
+            scanf("%d", &p->data.namXuatBan);
+
+            printf("Nhap so luong moi: ");
+            scanf("%d", &p->data.soLuong);
+
+            printf("Sua sach trong Stack thanh cong!\n");
+            return;
+        }
+
+        p = p->next;
+    }
+
+    printf("Khong tim thay sach co ma %s!\n", ma);
+}
+void hienThiStack(StackNode *top) {
+    if (top == NULL) {
+        printf("Stack dang rong!\n");
+        return;
+    }
+
+    printf("\n========== DANH SACH SACH TRONG STACK ==========\n");
+
+    StackNode *p = top;
+
+    while (p != NULL) {
+        printf("Ma sach: %s | Ten sach: %s | Tac gia: %s"
+               " | Nam XB: %d | So luong: %d\n",
+               p->data.maSach,
+               p->data.tenSach,
+               p->data.tacGia,
+               p->data.namXuatBan,
+               p->data.soLuong);
+
+        p = p->next;
+    }
+
+    printf("================================================\n");
+}
 int main() {
     Node *head = NULL;
     int luaChon;
@@ -231,9 +319,13 @@ int main() {
         printf("7. Xoa phan tu\n");
         printf("8. Sap xep danh sach (Theo Nam XB)\n");
         printf("9. Xuat danh sach cay BST\n");
+        printf("10. Them sach vao Stack\n");
+        printf("11. Xoa sach tren Stack\n");
+        printf("12. Sua sach trong Stack\n");
+        printf("13. Hien thi Stack\n");
         printf("0. Thoat chuong trinh\n");
         printf("===========================================================\n");
-        printf("Chon chuc nang (0-9): ");
+        printf("Chon chuc nang (0-13): ");
         scanf("%d", &luaChon);
 
         switch (luaChon) {
@@ -279,6 +371,34 @@ int main() {
             case 9:
                 xuatDanhSachCay(root);
                 break;
+            case 10: {
+            Sach s;
+            printf("Nhap ma sach: ");
+            scanf("%9s", s.maSach);
+            getchar();
+            printf("Nhap ten sach: ");
+            scanf("%49[^\n]", s.tenSach);
+            getchar();
+            printf("Nhap tac gia: ");
+            scanf("%49[^\n]", s.tacGia);
+            printf("Nhap nam xuat ban: ");
+            scanf("%d", &s.namXuatBan);
+
+            printf("Nhap so luong: ");
+            scanf("%d", &s.soLuong);
+
+            push(&top, s);
+             break;
+        }
+            case 11:
+            pop(&top);
+            break;
+            case 12:
+            suaSachStack(top);
+            break;
+            case 13:
+            hienThiStack(top);
+            break;
             case 0:
                 printf("\nDa thoat chuong trinh. Tam biet!\n");
                 break;
